@@ -10,6 +10,8 @@ namespace OnionApp.Domain.Core
         where O : ObjectS
         where S : Seller
     {
+        delegate void CreateObjectS(string message);
+        event CreateObjectS Notify;
         public int AdvertId { get; set; }
         public DateTime DateOfAdd { get; } = DateTime.Now;
         public DateTime DateOfActual { get; set; } =  DateTime.Now;
@@ -35,6 +37,12 @@ namespace OnionApp.Domain.Core
             set { if (Obj.Area != 0)
                     PriceForMeter =Price / (decimal)Obj.Area;
                 else PriceForMeter = 0; }
+        }
+        public void CreateObjectS(O obj)
+        {
+            string type2 = "OnionApp.Domain.Core" + type;
+            Type myType = obj.GetType();
+            myType newObject = new myType();
         }
         public void Save()
         {

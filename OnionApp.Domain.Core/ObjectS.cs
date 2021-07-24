@@ -5,7 +5,7 @@ namespace OnionApp.Domain.Core
 {
     public abstract class ObjectS
     {
-
+        
         public int ObjectId { get; set; }
         public string City { get; set; }
         public string Address { get; set; }

@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace OnionApp.Domain.Core
 { 
-    class RieltorStatistic <S> : Seller
-        where S:Seller
+    class RieltorStatistic <S>
+       where S:Seller
     {
+        public RieltorStatistic(S sel)
+        { sel.NumberOfObject++; }
+
+        public static void AddObject(Seller sel)
+        { sel.NumberOfObject++; }
+        
         public S sel { get; set; }
         public Rieltor CheckRieltorOrSaller()
         { 
