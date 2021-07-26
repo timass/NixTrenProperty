@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnionApp.Domain.Core
 {
-   public abstract class User
+   public abstract class User : IDelete
     {
         public int UserId { get; set; }
         public string Name { get; set; }

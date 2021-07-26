@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OnionApp.Domain.Core
 {
-    public abstract class ObjectS
+    public abstract class ObjectS : IDelete
     {
         
         public int ObjectId { get; set; }

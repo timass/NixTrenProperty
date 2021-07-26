@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 namespace OnionApp.Domain.Core
 { 
     class RieltorStatistic <S>
-       where S:Seller
+      where S:Seller
     {
-        public RieltorStatistic(S sel)
-        { sel.NumberOfObject++; }
-
-        public static void AddObject(Seller sel)
-        { sel.NumberOfObject++; }
+        public int NumberOfObject { get; set; }
+       
+        public static CheckTime(AdvertSell adv;)
         
         public S sel { get; set; }
         public Rieltor CheckRieltorOrSaller()

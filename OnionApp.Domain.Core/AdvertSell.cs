@@ -10,11 +10,9 @@ namespace OnionApp.Domain.Core
         where O : ObjectS
         where S : Seller
     {
-        delegate void CreateObjectS(string message);
-        event CreateObjectS Notify;
         public int AdvertId { get; set; }
-        public DateTime DateOfAdd { get; } = DateTime.Now;
-        public DateTime DateOfActual { get; set; } =  DateTime.Now;
+        public DateTime DateOfAdd { get; } = DateTime.Today;
+        public DateTime DateOfActual { get; set; } =  DateTime.Today;
         public O Obj { get; set; }
         public S Seller { get; set; }
         public decimal FirstPrice { get; private set; }
