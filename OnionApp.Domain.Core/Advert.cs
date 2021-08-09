@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace OnionApp.Domain.Core
 {
-    class AdvertSell <O, S>
+    public class Advert <O, S>
         where O : ObjectS
         where S : Seller
-    {
+    {        
         public int AdvertId { get; set; }
         public DateTime DateOfAdd { get; } = DateTime.Today;
-        public DateTime DateOfActual { get; set; } =  DateTime.Today;
+        public DateTime DateOfActual { get; set; }
         public O Obj { get; set; }
-        public S Seller { get; set; }
-        public decimal FirstPrice { get; private set; }
+        public S Sel { get; set; }
+        public bool RentOrSeal { get; set; }
+        public string PaimentConditions { get; set; }
+        public decimal FirstPrice { get; set; }
         public decimal LastPrice { get; set; }
         public decimal Price;
         public decimal price
@@ -36,20 +38,30 @@ namespace OnionApp.Domain.Core
                     PriceForMeter =Price / (decimal)Obj.Area;
                 else PriceForMeter = 0; }
         }
-        public void CreateObjectS(O obj)
+        public void ConfirmActual()
         {
-            string type2 = "OnionApp.Domain.Core" + type;
-            Type myType = obj.GetType();
-            myType newObject = new myType();
+            DateOfActual = DateTime.Today;
         }
-        public void Save()
+      /*  public AdvertSell(int advertId, O obj, S seller, decimal firstPrice)
         {
-            if (Obj != null )
+            AdvertId = advertId;
+            DateOfAdd = DateTime.Now;
+            Obj = obj;
+            Sel = seller;
+            FirstPrice = firstPrice;
+        }*/
+        public static List<Advert<O, S>> operator -(List<Advert<O, S>> list, Advert<O, S> adv)
+        {
+
+            for (int i = 0; i < list.Count; i++)
             {
-                //add DateOfActual, obj, Seller, Price to PublicDb;
-                //add DateOfAdd, obj, Seller, FirstPrice to HideDb;
+                if (list[i].AdvertId == adv.AdvertId)
+                {
+                    list.RemoveAt(i);
+                    break;
+                }
             }
-            else Console.WriteLine("Not enough data");
+            return list;
         }
     }
 }

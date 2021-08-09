@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnionApp.Domain.Core\OnionApp.Domain.Core.csproj" />
     <ProjectReference Include="..\OnionApp.Domain.Interfaces\OnionApp.Domain.Interfaces.csproj" />
   </ItemGroup>
 

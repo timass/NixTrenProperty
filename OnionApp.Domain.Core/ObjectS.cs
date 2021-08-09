@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace OnionApp.Domain.Core
 {
-    public abstract class ObjectS : IDelete
+    public abstract class ObjectS
     {
-        
+
+        public bool Electricity { get; set; }
+        public bool Gas { get; set; }
+        public bool Plumbing { get; set; }
+        public bool Sewerage { get; set; }
         public int ObjectId { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
-        public double Area { get; set; }
-        internal Utilites[] utilites =
-        {
-            new Utilites {Util = "Electricity", IsOrNot = false },
-            new Utilites {Util = "Gas", IsOrNot = false},
-            new Utilites {Util = "Plumbing", IsOrNot =false},
-            new Utilites { Util = "Sewerage",IsOrNot = false }
-        };
+        public double Area { get; set; }       
         public string Describe { get;  set; }
-        public List<object> Photos { get; set; }        
+        public string Photos { get; set; }        
     }
 }

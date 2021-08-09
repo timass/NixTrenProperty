@@ -8,12 +8,7 @@ namespace OnionApp.Domain.Core
 {
     public abstract class Room : ObjectS
     {
-        public int Rooms;       
-       /* public virtual int rooms
-            { 
-            get {return Rooms;}
-            set { Rooms = 1; }
-            }*/
+        public int Rooms { get; set; }
         public int Floor { get; set;}
     }
 }

@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace OnionApp.Domain.Core
 {
     public class Plot : ObjectS
     {
         public double AreaOfPlot { get; set; }
-        internal Plot(int objectId, string city, string address, 
-            Utilites[] ut, string describe, List<object> photos, double areaOfPlot)
+        public Plot(bool electricity, bool gas, bool plumbing, bool sewerage, int objectId, string city, string address, 
+            string describe, string photos, double areaOfPlot)
         {
-            ObjectId = objectId; City = city; Address = address; Area = 0; utilites = ut;
+            Electricity = electricity; Gas = gas; Plumbing = plumbing; Sewerage = sewerage;
+            ObjectId = objectId; City = city; Address = address; Area = 0;
             Describe = describe; Photos = photos; AreaOfPlot = areaOfPlot;
-        }
-
-
-        
+        }       
     }
 }

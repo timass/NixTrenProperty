@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace OnionApp.Domain.Core
 {
-    class RoomInFlat : RoomIndividual
+   public class RoomInFlat : Room
     {
         public int HowManyRoomsForOneKitchAndBath { get; set; }
-        internal RoomInFlat(int floor, bool kitchen, bool bathroom, int howManyRoomsForOneKitchAndBath)
-            : base (floor, kitchen, bathroom)
+        public RoomInFlat(bool electricity, bool gas, bool plumbing, bool sewerage, 
+            int objectId, string city, string address, double area,
+            string describe, string photos,
+            int floor, int howManyRoomsForOneKitchAndBath)
         {
+            Electricity = electricity; Gas = gas; Plumbing = plumbing; Sewerage = sewerage;
+            ObjectId = objectId; City = city; Address = address; Area = area;
+            Describe = describe; Photos = photos; Floor = floor; Rooms = 1; Floor = floor;
             HowManyRoomsForOneKitchAndBath = howManyRoomsForOneKitchAndBath;
         }
     }

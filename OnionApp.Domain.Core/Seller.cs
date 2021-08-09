@@ -1,15 +1,23 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnionApp.Domain.Core
 {
-    class Seller : User, IShowStatistic
+   public class Seller : User, IEnumerable // who has no more than one sale deal a year or rent deal only for one address 
     {
-        public string Telephone { get; set; }  // who has no more than one sale deal a year or rent deal only for one address 
-        public int NumberOfDeal { get; set; }
-        public RieltorStatistic stata;
+        public List<SalesFigures> Flist = new List<SalesFigures>(); //Statistics
+        public string Telephone { get; set; }
+        public string Passport { get; set; }
+        
+        public Seller(int userId, string name, string email, string parol, string telephone, string passport)
+        {
+            UserId = userId; Name = name; Email = email; Parol = parol;  Telephone = telephone; Passport = passport; 
+        }
+        public IEnumerator GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
     }
 }

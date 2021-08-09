@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OnionApp.Domain.Core
+﻿namespace OnionApp.Domain.Core
 {
-    class BuyerOrSeekerRieltor : User, IShowStatistic
-    {
-        public string Telephone { get; set; }
+    public class BuyerOrSeekerRieltor : User
+    { 
+        public string Telephone { get; set; }         
+        public BuyerOrSeekerRieltor(int userId, string name, string email, string telephone)
+        {
+            UserId = userId; Name = name; Email = email; Telephone = telephone;
+        }
     }
 }

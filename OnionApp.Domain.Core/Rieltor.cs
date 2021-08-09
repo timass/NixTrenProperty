@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 namespace OnionApp.Domain.Core
+
 {
-    class Rieltor : Seller, IShowStatistic
+   public class Rieltor : Seller
     {
-        public string Describe { get; set; }        
+        public string Describe { get; set; }      
+        public Rieltor(int userId, string name, string parol, string email, string telephone,
+            string passport, string describe)
+            : base (userId, name, email, parol, telephone, passport)
+        {  
+            Describe = describe;
+        }
     }
 }

@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 namespace OnionApp.Domain.Core
 {
-    class House : Plot
+    public class House : Plot
     {
-        public Room Rooms { get; set; }
+        public int Rooms { get; set; }
         public double AreaOfKitchen { get; set; }
         public bool TownHouse { get; set; }
-        internal House(int objectId, string city, string address, double area, 
-            Utilites[] ut, string describe, List<object> photos, double areaOfPlot,
-            Room rooms, double areaOfKitchen, bool townHouse)
-            : base (objectId, city, address, ut, describe, photos, areaOfPlot)
+        public House(bool electricity, bool gas, bool plumbing, bool sewerage, 
+            int objectId, string city, string address, double area, 
+            string describe, string photos, double areaOfPlot,
+          int rooms, double areaOfKitchen, bool townHouse)
+            : base (electricity, gas, plumbing, sewerage, 
+                  objectId, city, address, describe, photos, areaOfPlot)
         {
            Area = area;
            Rooms = rooms;
            AreaOfKitchen = areaOfKitchen;
            TownHouse = townHouse;
         }
-
     }
 }

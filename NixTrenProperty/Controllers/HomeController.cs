@@ -12,13 +12,14 @@ using OnionApp.Services.Interfaces;
 
 namespace NixTrenProperty.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController<O> : Controller
+        where O : ObjectS
     {
-        IObjectRepository repo;
+        IObjectSRepository<O> repo;
 
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController<O>> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController<O>> logger)
         {
             _logger = logger;
         }

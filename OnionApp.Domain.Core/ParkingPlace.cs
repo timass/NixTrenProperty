@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace OnionApp.Domain.Core
 {
-    class ParkingPlace : ObjectS
+   public class ParkingPlace : ObjectS
     {
-       public bool Electric { get; set; }
-       internal ParkingPlace(int objectId, string city, string address, double area,
-            Utilites[] ut, string describe, List<object> photos, bool electric )
+       public bool ElectricForEcar { get; set; }
+       public ParkingPlace(bool electricity, bool gas, bool plumbing, bool sewerage, int objectId, string city, string address, double area,
+            string describe, string photos, bool electricForEcar)             
        {
-            ObjectId = objectId; City = city; Address = address; Area = area; utilites = ut;
-            Describe = describe; Photos = photos; Electric = electric;
+            Electricity = electricity; Gas = gas; Plumbing = plumbing; Sewerage = sewerage;
+            ObjectId = objectId; City = city; Address = address; Area = area;
+            Describe = describe; Photos = photos; ElectricForEcar = electricForEcar;
        }
     }
 }

@@ -7,14 +7,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace OnionApp.Infrastructure.Data
 {
-    class ApartmentRepository : IApartmentRepository
+    class ApartmentRepository //: IObjectSRepository<O>        where O : ObjectS
     {
          
-        private AddAdvertContext db;
+        private AdvertContext<Apartment> db;
 
         public ApartmentRepository()
         {
-            this.db = new AddAdvertContext();
+            this.db = new AdvertContext<Apartment>();
         }
 
         public IEnumerable<Apartment> GetBookList()
