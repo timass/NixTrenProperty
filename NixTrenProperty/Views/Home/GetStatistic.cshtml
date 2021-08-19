@@ -1,0 +1,31 @@
+﻿@*@model IEnumerable<OnionApp.Domain.Core.Statistic>*@
+
+@{
+
+    // Layout = null;
+    //ViewBag.Title = "GetStatistic";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Statistis</title>
+</head>
+<body>
+    <h3>Seller</h3>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Percent-</td>
+            <td>Time</td>
+            <td></td>
+        </tr>
+          <tr>
+             <td>@ViewBag.stat.sel.Name </td>
+             <td>@ViewBag.stat.AverageDifPrice </td>
+             <td>@ViewBag.stat.AverageTimeOfDeal</td>
+            </tr>         
+    </table>
+</body>
+</html>
+

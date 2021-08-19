@@ -10,6 +10,7 @@ namespace OnionApp.Domain.Core
     {
        public bool SaleOrRent { get; set; }
         public decimal PriceDifference { get; set; }
-        public TimeSpan TimeDifference { get; set; }        
+        public TimeSpan TimeDifference { get; set; }
+        public Seller Seller;
     }
 }

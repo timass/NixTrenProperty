@@ -3,9 +3,9 @@
     public class BuyerOrSeekerRieltor : User
     { 
         public string Telephone { get; set; }         
-        public BuyerOrSeekerRieltor(int userId, string name, string email, string telephone)
-        {
-            UserId = userId; Name = name; Email = email; Telephone = telephone;
-        }
+        //public BuyerOrSeekerRieltor(int userId, string name, string email, string telephone)
+        //{
+        //    UserId = userId; Name = name; Email = email; Telephone = telephone;
+        //}
     }
 }
