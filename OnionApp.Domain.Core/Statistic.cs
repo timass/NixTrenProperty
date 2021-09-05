@@ -9,14 +9,9 @@ namespace OnionApp.Domain.Core
 {
     public class Statistic
     {
-        
-        public Guid StatisticId { get; set; }
+        public Guid Id { get; set; }
         public double AverageDifPrice { get; set; }
-        public string AverageTimeOfDeal { get; set; } 
-        
-        public Guid SellerIdStatisticId { get; set; }
-        public Seller Sel { get; set; }
-      //  public Statistic() { }
-           
+        public string AverageTimeOfDeal { get; set; }
+        public List<SalesFigure> SalesFigures {get; set;}       
     }
 }

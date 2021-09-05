@@ -1,0 +1,134 @@
+﻿
+@model NixTrenProperty.ViewModels.RegisterViewModel
+@{
+    Layout = "_Layout";
+}
+
+
+<link href="~/css/form-validation.css" rel="stylesheet">
+<script src="~/js/form-validation.js"></script>
+<body class="bg-light">
+
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <h2>Registration</h2>
+                <p class="lead">Enter your data to be able to post ads and search realtors.</p>
+            </div>
+
+            <div class="row g-5">
+
+                <div class="col-md-7 col-lg-8">
+                    <form method="post" asp-controller="Account" asp-action="Register" id="formReg">
+
+                        <div class="row g-3">
+                            @*<div class="col-sm-6">
+
+                                    <label for="firstName" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" name="Name">
+
+                                </div>*@
+                            <p class="lead">Enter your user name and email, if you want to be able to view realtors.</p>
+                            <div class="col-12">
+                                <label asp-for="UserName" class="form-label"></label><br />
+                                <input asp-for="UserName" />
+                                <span asp-validation-for="UserName"></span>
+                                @*<label for="username" class="form-label">Username</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text"></span>
+                                        <input type="text" class="form-control" id="username" placeholder="Username" name="Username">
+
+                                    </div>*@
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Email" class="form-label"></label><br />
+                                <input asp-for="Email" />
+                                <span asp-validation-for="Email"></span>
+                            </div>
+                            <br />
+                            @*<label for="email" class="form-label">Email </label>
+                                <input type="email" class="form-control" placeholder="you@example.com" name="Email">*@
+                            <p class="lead">Enter your phone, if you want to create adverts.</p>
+                            <div class="col-12">
+                                <label asp-for="Telephone" class="form-label"></label><br />
+                                <input asp-for="Telephone" />
+                                <span asp-validation-for="Telephone"></span>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Name" class="form-label"></label><br />
+                                <input asp-for="Name" />
+                                <span asp-validation-for="Name"></span>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Password" class="form-label"></label><br />
+                                <input asp-for="Password" />
+                                <span asp-validation-for="Password"></span>
+
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="PasswordConfirm" class="form-label"></label><br />
+                                <input asp-for="PasswordConfirm" />
+                                <span asp-validation-for="PasswordConfirm"></span>
+                            </div>
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Registration</button>
+                        </div>
+                    </form>
+                </div>
+
+                @*<script type="text/javascript">
+                        $('#telephone').inputmask("+38(999)999-9999");
+                        jQuery.validator.addMethod("checkMaskPhone", function (value, element) {
+                            return /\+\d{2}\(\d{3}\)\d{3}-\d{4}/g.test(value);
+                        });
+                        //$.validator.addClassRules({
+                        //    'telephone': {
+                        //        checkMaskPhone: true,
+                        //    }
+                        //});
+                        $(function () {
+                            var validForm = $('#formReg');
+                            validForm.validate(
+                                {
+                                    rules: {
+                                        Name: {
+                                            required: true,
+                                            rangelength: [2, 20]
+                                        },
+                                        Username: {
+                                            required: true,
+                                            rangelength: [2, 20]
+                                        },
+                                        Email: {
+                                            required: true,
+                                            email: true
+                                        },
+                                        PasswordFirst: {
+                                            required: true,
+                                            rangelength: [6, 8]
+                                        },
+                                        Password: {
+                                            equalTo: "#password",
+                                        },
+                                        Telephone: {
+                                            required: true,
+                                            checkMaskPhone: true
+                                        }
+                                    },
+                                    messages: {
+                                        Name: "Valid first name is required",
+                                        Username: "Valid user name is required.",
+                                        PasswordFirst: "Password must contain from 6 to 8 symbols",
+                                        Password: "Please enter the same value again",
+                                        Email: " Please enter a valid email address",
+                                        Telephone: "Valid telephone is required"
+                                    }
+                                }
+                            )
+                        });
+                    </script>*@
+            </div>
+        </main>
+    </div>
+</body>
+
+

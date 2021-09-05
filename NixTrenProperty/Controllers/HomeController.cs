@@ -1,46 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using OnionApp.Infrastructure.Data;
-using System;
+using NixTrenProperty.Models;
+using Microsoft.AspNetCore.Identity;
 using OnionApp.Domain.Core;
+using System.Threading.Tasks;
 
 namespace NixTrenProperty.Controllers
 {
     public class HomeController : Controller
+        
     {
-        SellerContext db;
-        public HomeController(SellerContext context)
+         public IActionResult Index()
         {
-            db = context;
-        }
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Action()
-        {
-            return View(db.Sellers.ToList());           
-        }
-        [HttpGet]
-        public IActionResult GetStatistic(Guid? id)
-        {
-            if (id == null) { return RedirectToAction("Action"); }
-            else
+            if (User.Identity.IsAuthenticated)
             {
-                foreach (Statistic item in db.Statistics)
-                {
-                    if (item.SellerIdStatisticId == id)
-                        ViewBag.stat = item;
-                }
-              return View();
+                return RedirectToAction("Index", "User");
             }
-            
-        }
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-
+            else return View();
+        }    
     }
 }

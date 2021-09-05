@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<OnionApp.Domain.Core.User> SignInManager
+@inject UserManager<OnionApp.Domain.Core.User> UserManager
+    
+<div class="bar">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand">Hello @User.Identity.Name!</a>          
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-controller="User" asp-action="Index">Home</a>
+                    </li>                
+                </ul>
+                <form class="d-flex">                   
+                        <a class="nav-link active" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>                       
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>

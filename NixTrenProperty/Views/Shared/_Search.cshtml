@@ -1,0 +1,186 @@
+﻿
+@{
+}
+
+<form method="post" asp-controller="User" asp-action="Search">
+    <h4 class="my-0 fw-normal">Search property</h4>
+    <label>Type of deal</label>
+    <div class="my-3">
+        <div class="col-sm-6">
+            @Html.RadioButton("rentOrSeal", "true")
+            <span>Sale</span>
+            @Html.RadioButton("rentOrSeal", "false")
+            <span>Rent</span> <br />
+        </div>
+    </div>
+
+    
+        <div class="col-sm-8">
+            <label for="country" class="form-label">Type of property</label>
+            <select class="form-select" id="viewSelector">
+                <option value="0">Choose...</option>
+                <option value="Plot">Plot</option>
+                <option value="House">House</option>
+                <option value="ParkingPlace">ParkingPlace</option>
+                <option value="Garage">Garage</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Penthouse">Penthouse</option>
+                <option value="RoomIndividual">RoomIndividual</option>
+                <option value="RoomInFlat">RoomInFlat</option>
+            </select>
+        </div>
+    
+    @*<div>
+            <label asp-for="City">City</label>
+            <select asp-for="City" asp-items="Model.Cities"></select>
+        </div>*@
+    <div class="col-sm-8">
+        <label class="form-label">City</label>
+        <input type="number" class="form-control" id="" placeholder="" value="" required name="City">
+    </div>
+
+    <div class="col-sm-6">
+        <label class="form-label">Price min</label>
+        <input type="number" class="form-control" id="" placeholder="" value="" required name="Price min">
+    </div>
+    <div class="col-sm-6">
+        <label class="form-label">Price max</label>
+        <input type="number" class="form-control" id="" placeholder="" value="" required name="Price max">
+    </div>
+    <div class="col-sm-6">
+        @Html.RadioButton("SortPriceMinMax", "false")
+        <span>Sale</span>
+        @Html.RadioButton("SortPriceMaxMin", "false")
+        <span>Rent</span> <br />
+    </div>
+     <div class="col-sm-8">
+    @*<input id="credit" name="SortPriceMinMax" type="radio" class="form-check-input" value="true">
+        <label class="form-check-label" for="credit">Sort price min-max</label>*@
+    @*<label class="form-check-label">Sort price min-Max</label>*@
+        @Html.CheckBox("SortPriceMinMax", false)
+        <span>Sort price min-Max</span>
+  
+        @Html.CheckBox("SortPriceMaxMin", false)
+        <span>Sort price Max-min</span>
+    @*<input id="debit" name="SortPriceMaxMin" type="radio" class="form-check-input" value="false">
+        <label class="form-check-label" for="debit">Sort price max-min</label>*@
+    </div>
+
+    <div class="col-sm-6">
+        @*<input type="checkbox" class="form-check-input" id="same-address">*@
+        @Html.CheckBox("Electricity", false)
+        <label class="form-check-label">Electricity</label>
+
+    </div>
+
+    <div class="col-sm-6">
+        @*<input type="checkbox" class="form-check-input" id="save-info">*@
+        @Html.CheckBox("Gas", false)
+        <label class="form-check-label">Gas</label>
+
+    </div>
+    <div class="col-sm-6">
+        @*<input type="checkbox" class="form-check-input" id="same-address">*@
+        @Html.CheckBox("Plumbing", false)
+        <label class="form-check-label" for="same-address">Plumbing</label>
+    </div>
+
+    <div class="col-sm-6">
+        @*<input type="checkbox" class="form-check-input" id="save-info">*@
+        @Html.CheckBox("Sewerage", false)
+        <label class="form-check-label" for="save-info">Sewerage</label>
+    </div>
+    <div>
+        <button id="But" class="w-75 btn btn-lg btn-primary" type="submit" method="post" asp-controller="User" asp-action="Search">Search</button>
+    </div>
+
+    @*<hr class="col-md-12">*@
+
+    @*<div id="AreaOfP" class="col-sm-6">
+              <label class="form-label">Area of plot</label>
+              <input type="number" class="form-control" placeholder="Square meters" name="AreaOfPlot">
+          </div>
+          <div id="RoomsInH" class="col-sm-6">
+              <label class="form-label">Number of rooms</label>
+              <input type="number" class="form-control" id="" placeholder="" name="RoomsInHouse">
+          </div>
+          <div id="AreaOfK" class="col-sm-6">
+              <label class="form-label">Area of kitchen </label>
+              <input type="number" class="form-control" id="" placeholder="Square meters" name="AreaOfKitchen">
+          </div>
+          <div id="T" class="col-md-4">
+              <label class="form-label">TownHouse</label>
+              @Html.CheckBox("TownHouse", false)
+          </div>
+          <div id="El" class="my-3">
+              <div class="col-md-4">
+                  <input type="checkbox" class="form-check-input" id="" name="ElectricForEcar" value="false">
+                  <label class="form-check-label">Electricity for ecar</label>
+              </div>
+          </div>
+
+          <div id="P" class="col-md-4">
+              <input type="checkbox" class="form-check-input" id="save-info" name="Pit" value="false">
+              <label class="form-check-label" for="save-info" name="Pit">Pit</label>
+          </div>
+          <div id="Cel" class="col-md-4">
+              <input type="checkbox" class="form-check-input" id="save-info" name="Cellar" value="false">
+              <label class="form-check-label" for="save-info">Cellar</label>
+          </div>
+          <div id="R" class="col-sm-6">
+              <label for="firstName" class="form-label">Rooms</label>
+              <input type="number" class="form-control" id="firstName" name="Rooms" placeholder="">
+          </div>
+
+          <div id="F" class="col-sm-6">
+              <label for="firstName" class="form-label">Flor</label>
+              <input type="number" class="form-control" id="firstName" name="Floor" placeholder="99">
+          </div>
+          <div id="K" class="col-md-7">
+              <input type="checkbox" class="form-check-input" id="same-address" name="KitchenWithRoom" value="false">
+              <label class="form-check-label" for="save-info">Kitchen combined with a room</label>
+          </div>
+          <div id="P" class="col-md-3">
+              <input type="checkbox" class="form-check-input" name="Penthouse" id="same-address" value="false">
+              <label class="form-check-label" for="same-address">Penthouse</label>
+          </div>
+
+          <div id="KR" class="col-md-3">
+              <input type="checkbox" class="form-check-input" id="same-address" name="Kitchen" value="false">
+              <label class="form-check-label" for="same-address">With kitchen</label>
+          </div>
+          <div id="B" class="col-md-3">
+              <input type="checkbox" class="form-check-input" id="same-address" name="Bathroom" value="false">
+              <label class="form-check-label" for="same-address">With Bathroom</label>
+          </div>
+          <div id="H" class="col-sm-6">
+              <label for="firstName" class="form-label">How many rooms for one kitch and bath</label>
+              <input type="number" class="form-control" id="firstName" name="HowManyRoomsForOneKitchAndBath" placeholder="99">
+          </div>
+          <button id="But" class="w-75 btn btn-lg btn-primary" type="submit" method="post" asp-controller="User" asp-action="Search">Search</button>
+        </div>*@
+
+    <script type="text/javascript">
+        $(function () {
+            $.viewMap = {
+                '0': $([]),
+                'Plot': $("#AreaOfP, #PlotBut, #But"),
+                'House': $("#AreaOfP , #RoomsInH, #AreaOfK, #T, #But"),
+                'ParkingPlace': $("#El, #But"),
+                'Garage': $("#El, #P, #Cel, #But"),
+                'Apartment': $("#F, #R, #K, #AreaOfK, #But"),
+                'Penthouse': $("#F, #R, #K, #AreaOfK, #P, #But"),
+                'RoomIndividual': $("#F, #KR, #B, #But"),
+                'RoomInFlat': $("#F, #H, #But")
+            };
+
+            $('#viewSelector').change(function () {
+                // hide all
+                $.each($.viewMap, function () { this.hide(); });
+                // show current
+                $.viewMap[$(this).val()].show();
+            }).change();
+        });
+
+    </script>
+</form>

@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<body>
+    <header>
+        <partial name="_BarAdmin" />
+    </header>
+
+    <div class="cla">
+        <form class="col-sm-12" method="get" asp-controller="UsersControl" asp-action="Index">
+            @*<input type="hidden" class="form-control" id="" placeholder="" value="" name="userName">*@
+            <button class="w-100 btn btn-lg btn-primary" type="submit"><h4>Control/Delete users </h4></button>
+        </form>
+    </div>
+    <div class="cla">
+        <form class="col-sm-12" method="get" asp-controller="UsersControl" asp-action="Create">
+            @*<input type="hidden" class="form-control" id="" placeholder="" value="" name="userName">*@
+            <button class="w-100 btn btn-lg btn-primary" type="submit"><h4>Create user</h4></button>
+        </form>
+    </div>
+    <!--<div class="cla">
+        <form class="col-sm-12" method="get" asp-controller="UsersControl" asp-action="Edit">-->
+            @*<input type="hidden" class="form-control" id="" placeholder="" value="" name="userName">*@
+            <!--<button class="w-100 btn btn-lg btn-primary" type="submit"><h4>Edit user</h4></button>
+        </form>
+    </div>
+    <div class="cla">
+        <form class="col-sm-12" method="get" asp-controller="UsersControl" asp-action="Delete">-->
+            @*<input type="hidden" class="form-control" id="" placeholder="" value="" name="userName">*@
+            <!--<button class="w-100 btn btn-lg btn-primary" type="submit"><h4>Delete user</h4></button>
+        </form>
+    </div>-->
+
+
+    <div class="container-fluid py-5">
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal">Make your dreams come true...</h1>
+            <p class="fs-5 text-muted"> All we want is a big white house.</p>
+        </div>
+        <main class="flex-shrink-0">
+            <div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+
+                            <div class="row g-5">
+
+                                @*<div>
+                                        <label asp-for="City">City</label>
+                                        <select asp-for="City" asp-items="Model.Cities"></select>
+                                    </div>*@
+
+                                <partial name="_Search" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4 rounded-3 shadow-sm text-right">
+                        <div class="card-header py-3">
+
+                            <div class="row g-5">
+                                <div class="container">
+                                    <partial name="_ViewAdverts" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+

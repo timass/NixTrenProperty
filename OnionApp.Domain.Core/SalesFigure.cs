@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace OnionApp.Domain.Core
 {
-   public class SalesFigures // test
+   public class SalesFigure 
     {
-       public bool SaleOrRent { get; set; }
+        public Guid Id { get; set; }        
+        public bool SaleOrRent { get; set; }
         public decimal PriceDifference { get; set; }
         public TimeSpan TimeDifference { get; set; }
-        public Seller Seller;
+        public Guid StatisticId { get; set; }
+        public Statistic Statistic { get; set; }
     }
 }

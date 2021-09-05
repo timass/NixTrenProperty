@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Search Rieltor";
+    Layout = "_Layout";
+}
+@model IEnumerable<OnionApp.Domain.Core.Seller>
+
+<h2>Rieltors</h2>
+<table class="table">
+    @if (Model != null)
+        @foreach (var user in Model)
+        {
+            if (user.Rieltor)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>
+                        @*@user.Statistic.*@
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        }
+    else
+    {<a>No rieltors yet</a>}
+</table>

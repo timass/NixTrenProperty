@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NixTrenProperty.Controllers
 {
-    public class AcountController : Controller
+    public class AdminController : Controller
     {
         public IActionResult Index()
         {

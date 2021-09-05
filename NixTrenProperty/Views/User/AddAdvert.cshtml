@@ -1,0 +1,178 @@
+﻿@{
+    // ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+@*@await Html.PartialAsync("_BarAutoriz")*@
+
+
+<div class="container">
+    <main>
+        <form id="Pl" method="post" asp-controller="User" asp-action="AddAdvert">
+            <div class="row g-5">
+                <div class="col-md-6">
+
+                    <label for="country" class="col-sm-6">Type of property</label>
+                    <select class="form-select" id="viewSelector" name="typeObj">
+                        <option value="Plot">Plot</option>
+                        <option value="House">House</option>
+                        <option value="ParkingPlace">ParkingPlace</option>
+                        <option value="Garage">Garage</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="ManyLevelsApartment">Penthouse</option>
+                        <option value="RoomIndividual">RoomIndividual</option>
+                        <option value="RoomInFlat">RoomInFlat</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <input type="hidden" class="form-control" id="" placeholder="" value="@User.Identity.Name" required name="userName">
+            </div>
+            @*<button class="w-100 btn btn-lg btn-primary" type="submit">Continue</button>*@
+
+            <label class="col-sm-6">Type of deal</label>
+            <div class="col-sm-6">
+                <div class="form-check">
+                    <input id="credit" name="rentOrSeal" type="radio" class="form-check-input" value="true" checked required>
+                    <label class="form-check-label" for="credit">Sale</label>
+                </div>
+                <div class="form-check">
+                    <input id="debit" name="rentOrSeal" type="radio" class="form-check-input" value="false" required>
+                    <label class="form-check-label" for="debit">Arend</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-control" placeholder="$" value="" name="City">
+            </div><div class="col-sm-6">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-control" placeholder="$" value="" name="Address">
+            </div>
+            <div class="col-sm-12">
+                <label class="form-label">Describe condition of paiment</label>
+                <textarea type="textarea" class="form-control" placeholder="Installment, payment for first and last months, additional commission for example " value="" name="paimentConditions"></textarea>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-control" placeholder="$" value="" name="firstPrice">
+            </div>
+            <hr class="col-md-12">
+            <div class="col-sm-6">
+                <label class="form-label">Area</label>
+                <input type="number" class="form-control" placeholder="Square meters" value="" name="Area">
+            </div>
+            <div class="col-md-3">
+                <input type="checkbox" class="form-check-input" id="same-address" value="true">
+                <label class="form-check-label" for="same-address">Electricity</label>
+            </div>
+
+            <div class="col-md-3">
+                <input type="checkbox" class="form-check-input" id="save-info" value="true">
+                <label class="form-check-label" for="save-info">Gas</label>
+            </div>
+            <div class="col-md-3">
+                <input type="checkbox" class="form-check-input" id="same-address" value="true">
+                <label class="form-check-label" for="same-address">Plumbing</label>
+            </div>
+
+            <div class="col-md-3">
+                <input type="checkbox" class="form-check-input" id="save-info" value="true">
+                <label class="form-check-label" for="save-info">Sewerage</label>
+            </div>
+
+            <hr class="col-md-12">
+
+            <div id="AreaOfP" class="col-sm-6">
+                <label class="form-label">Area of plot</label>
+                <input type="number" class="form-control" placeholder="Square meters" name="AreaOfPlot">
+            </div>
+            <div id="RoomsInH" class="col-sm-6">
+                <label class="form-label">Number of rooms</label>
+                <input type="number" class="form-control" id="" placeholder="" name="RoomsInHouse">
+            </div>
+            <div id="AreaOfK" class="col-sm-6">
+                <label class="form-label">Area Of Kitchen</label>
+                <input type="number" class="form-control" id="" placeholder="Square meters" name="AreaOfKitchen">
+            </div>
+            <div id="T" class="col-md-4">
+                <label class="form-label">TownHouse</label>
+                @Html.CheckBox("TownHouse", false)
+            </div>
+            <div id="El" class="my-3">
+                <div class="col-md-4">
+                    <input type="checkbox" class="form-check-input" id="" name="ElectricForEcar" value="false">
+                    <label class="form-check-label">Electricity for ecar</label>
+                </div>
+            </div>
+
+            <div id="P" class="col-md-4">
+                <input type="checkbox" class="form-check-input" id="save-info" name="Pit" value="false">
+                <label class="form-check-label" for="save-info" name="Pit">Pit</label>
+            </div>
+            <div id="Cel" class="col-md-4">
+                <input type="checkbox" class="form-check-input" id="save-info" name="Cellar" value="false">
+                <label class="form-check-label" for="save-info">Cellar</label>
+            </div>
+            <div id="R" class="col-sm-6">
+                <label for="firstName" class="form-label">Rooms</label>
+                <input type="number" class="form-control" id="firstName" name="Rooms" placeholder="">
+            </div>
+
+            <div id="F" class="col-sm-6">
+                <label for="firstName" class="form-label">Flor</label>
+                <input type="number" class="form-control" id="firstName" name="Floor" placeholder="">
+            </div>
+            <div id="K" class="col-md-7">
+                <input type="checkbox" class="form-check-input" id="same-address" name="KitchenWithRoom" value="false">
+                <label class="form-check-label" for="save-info">Kitchen combined with a room</label>
+            </div>
+            <div id="P" class="col-md-3">
+                <input type="checkbox" class="form-check-input" name="Penthouse" id="same-address" value="false">
+                <label class="form-check-label" for="same-address">Penthouse</label>
+            </div>
+
+            <div id="KR" class="col-md-3">
+                <input type="checkbox" class="form-check-input" id="same-address" name="Kitchen" value="false">
+                <label class="form-check-label" for="same-address">With kitchen</label>
+            </div>
+            <div id="B" class="col-md-3">
+                <input type="checkbox" class="form-check-input" id="same-address" name="Bathroom" value="false">
+                <label class="form-check-label" for="same-address">With Bathroom</label>
+            </div>
+            <div id="H" class="col-sm-6">
+                <label for="firstName" class="form-label">How many rooms for one kitch and bath</label>
+                <input type="number" class="form-control" id="firstName" name="HowManyRoomsForOneKitchAndBath" placeholder="99">
+            </div>
+            <button id="But" class="w-100 btn btn-lg btn-primary" type="submit">Add Advert</button>
+            @*@if ($("#viewSelector") == "Plot")
+        {
+        <button class="w-100 btn btn-lg btn-primary" type="submit" method="post" asp-controller="User" asp-action="AddPlot">Add property</button>
+        }*@
+
+
+
+            <script type="text/javascript">
+                $(function () {
+                    $.viewMap = {
+                        '0': $([]),
+                        'Plot': $("#AreaOfP, #PlotBut, #But"),
+                        'House': $("#AreaOfP , #RoomsInH, #AreaOfK, #T, #But"),
+                        'ParkingPlace': $("#El, #But"),
+                        'Garage': $("#El, #P, #Cel, #But"),
+                        'Apartment': $("#F, #R, #K, #AreaOfK, #But"),
+                        'Penthouse': $("#F, #R, #K, #AreaOfK, #But"),
+                        'RoomIndividual': $("#F, #KR, #B, #But"),
+                        'RoomInFlat': $("#F, #H, #But")
+                    };
+
+                    $('#viewSelector').change(function () {
+                        // hide all
+                        $.each($.viewMap, function () { this.hide(); });
+                        // show current
+                        $.viewMap[$(this).val()].show();
+                    }).change();
+                });
+
+            </script>
+        </form>
+</main>
+</div>

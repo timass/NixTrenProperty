@@ -1,67 +1,65 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnionApp.Domain.Core
 {
-    public class Advert <O, S>
-        where O : ObjectS
-        where S : Seller
+   [Table("Adverts")] 
+    public class Advert
     {        
-        public int AdvertId { get; set; }
+        public Guid Id { get; set; }
         public DateTime DateOfAdd { get; } = DateTime.Today;
-        public DateTime DateOfActual { get; set; }
-        public O Obj { get; set; }
-        public S Sel { get; set; }
-        public bool RentOrSeal { get; set; }
+        DateTime? DateConfirm { get; set; }
+        DateTime Date;
+        public DateTime date
+        {
+            get { return Date; }
+            set
+            {
+                if (DateConfirm != null)
+                    Date = (DateTime)DateConfirm;
+                else Date = DateOfAdd;
+            }
+        }
+        public string typeObj { get; set; }               
+        public string IdObj { get; set; }
+        [Required]
+        public bool RentOrSeal { get; set; } // true -Seal, false -rent
         public string PaimentConditions { get; set; }
+        [Required]
         public decimal FirstPrice { get; set; }
-        public decimal LastPrice { get; set; }
+        public decimal? LastPrice { get; set; }
         public decimal Price;
+
         public decimal price
         {
             get { return Price; }
             set
             {
-                if (LastPrice != 0)
-                    Price = LastPrice;
+                if (LastPrice != null)
+                    Price = (decimal)LastPrice;
                 else Price = FirstPrice;
             }
         }
-        public decimal PriceForMeter;
-        public decimal priceForMeter
-        {
-            get { return PriceForMeter; }
-            set { if (Obj.Area != 0)
-                    PriceForMeter =Price / (decimal)Obj.Area;
-                else PriceForMeter = 0; }
-        }
+        [Required]
+        public string City { get; set; }
         public void ConfirmActual()
         {
-            DateOfActual = DateTime.Today;
+            DateConfirm = DateTime.Today;
         }
-      /*  public AdvertSell(int advertId, O obj, S seller, decimal firstPrice)
+        public void ChangePrice(decimal newprice)
         {
-            AdvertId = advertId;
-            DateOfAdd = DateTime.Now;
-            Obj = obj;
-            Sel = seller;
-            FirstPrice = firstPrice;
-        }*/
-        public static List<Advert<O, S>> operator -(List<Advert<O, S>> list, Advert<O, S> adv)
-        {
-
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].AdvertId == adv.AdvertId)
-                {
-                    list.RemoveAt(i);
-                    break;
-                }
-            }
-            return list;
+            LastPrice = newprice;
         }
+        public void ChangePaimentConditions(string newPaimentConditions)
+        {
+            PaimentConditions = newPaimentConditions;
+        }
+        
     }
 }
