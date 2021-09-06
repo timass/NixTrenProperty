@@ -4,6 +4,7 @@ using OnionApp.Domain.Core;
 using NixTrenProperty.Models;
 using System.Threading.Tasks;
 using NixTrenProperty.ViewModels;
+using Microsoft.AspNetCore.Authentication;
 
 namespace NixTrenProperty.Controllers
 {
@@ -11,7 +12,6 @@ namespace NixTrenProperty.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        ApplicationContext db;
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
@@ -88,13 +88,28 @@ namespace NixTrenProperty.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Logout()
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Logout()
+        //{
+        //    await _signInManager.SignOutAsync();
+        //    return RedirectToAction("Index", "Home");
+        //}
+        public async Task Logout()
         {
-           
+            await SignOut("Home/Index");
+        }
+
+
+        public async Task SignOut(string redirectUri)
+        {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "User");
+            await HttpContext.SignOutAsync("Cookies");
+            var prop = new AuthenticationProperties()
+            {
+                RedirectUri = redirectUri
+            };
+            await HttpContext.SignOutAsync("Microsoft", prop);
         }
     }
 }
