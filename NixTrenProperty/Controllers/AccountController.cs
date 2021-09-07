@@ -5,6 +5,8 @@ using NixTrenProperty.Models;
 using System.Threading.Tasks;
 using NixTrenProperty.ViewModels;
 using Microsoft.AspNetCore.Authentication;
+//using AspNetCore.Identity.Application;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace NixTrenProperty.Controllers
 {
@@ -88,28 +90,40 @@ namespace NixTrenProperty.Controllers
             return View(model);
         }
 
-        //[HttpPost]
+        [HttpPost]
         //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await _signInManager.SignOutAsync();
-        //    return RedirectToAction("Index", "Home");
-        //}
-        public async Task Logout()
-        {
-            await SignOut("Home/Index");
-        }
-
-
-        public async Task SignOut(string redirectUri)
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            await HttpContext.SignOutAsync("Cookies");
-            var prop = new AuthenticationProperties()
-            {
-                RedirectUri = redirectUri
-            };
-            await HttpContext.SignOutAsync("Microsoft", prop);
+            return RedirectToAction("Index", "Home");
         }
+        //public async Task Logout()
+        //{
+        //    await SignOut("Home/index");
+
+        //}
+
+
+        //     public IActionResult LogOut()
+        //{
+        //         if (Context.User.Identity.IsAuthenticated)
+        //         {
+        //             Context.Authentication.SignOutAsync(OpenIdConnectAuthenticationDefaults.AuthenticationScheme);
+        //             Context.Authentication.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //         }               
+        //     return RedirectToAction(" Index ", " Home ");
+        // }
+
+
+        //public async Task SignOut(string redirectUri)
+        //{
+        //    await _signInManager.SignOutAsync();
+        //    await HttpContext.SignOutAsync("Cookies");
+        //    var prop = new AuthenticationProperties()
+        //    {
+        //        RedirectUri = redirectUri
+        //    };
+        //    await HttpContext.SignOutAsync("oidc", prop);
+        //}
     }
 }

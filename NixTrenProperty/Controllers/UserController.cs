@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using NixTrenProperty.Models;
 using Microsoft.AspNetCore.Identity;
 using NixTrenProperty.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace NixTrenProperty.Controllers
 {
@@ -36,6 +37,7 @@ namespace NixTrenProperty.Controllers
         //        role = "admin";
         //    return role;
         //}       
+       
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -44,7 +46,7 @@ namespace NixTrenProperty.Controllers
                 return RedirectToAction("Index", "Seller");
             if (roles.Contains("admin"))
                 return RedirectToAction("Index", "Admin");           
-            return View();
+            return View(await db.Adverts.ToListAsync());
         }    
     }
 }

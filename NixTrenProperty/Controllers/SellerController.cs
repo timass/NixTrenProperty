@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NixTrenProperty.Models;
 using OnionApp.Domain.Core;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 //using TagHelpersApp.Models;
@@ -16,8 +18,46 @@ namespace NixTrenProperty.Controllers
         }
         public IActionResult Index()
         {
+
             return View();
         }
+        public async Task<IActionResult> MyAdverts()
+        {
+            return View(await db.Adverts.ToListAsync());
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+
+            Advert advert = await db.Adverts.FirstOrDefaultAsync(p => p.Id.ToString() == id);
+            if (advert != null)
+                return View(advert);
+            else return NotFound();
+        }
+      
+        [HttpPost]
+        public async Task<IActionResult> Edit(Advert advert)
+        {
+            db.Adverts.Update(advert);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index", "Seller");
+        }
+       
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+
+            Advert advert = await db.Adverts.FirstOrDefaultAsync(p => p.Id == id);
+            if (advert != null)
+            {
+               db.Adverts.Remove(advert);
+               await db.SaveChangesAsync();
+               return RedirectToAction("Index", "Seller");
+            }            
+            return NotFound();
+        }
+
         [HttpGet]
         public IActionResult AddAdvert()
         {
@@ -25,12 +65,12 @@ namespace NixTrenProperty.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddAdvert(
+        public async Task<IActionResult> AddAdvert(
             Plot plot, House house, ParkingPlace parkingPlace, Garage garage,
             Apartment apartment, ManyLevelsApartment manyLevelsApartment,
             RoomIndividual roomIndividual, RoomInFlat roomInFlat,
             string typeObj, string userName,
-            bool rentOfSale, string paimentConditions, decimal firstPrice, string City)
+            bool rentOfSale, string paimentConditions, int firstPrice, string City)
         {
             string idObj = "";
             switch (typeObj)
@@ -82,18 +122,16 @@ namespace NixTrenProperty.Controllers
             //CitiesViewModel cv = new CitiesViewModel();
             //cv.Cities.Add(new SelectListItem { Value = City, Text = City });
             db.Adverts.Add(adv);
-            User[] sel = db.Users.Where(a => (a.Name == userName)).ToArray();
-            if (sel.Length != 1)
-                return View("ErrorSeller");
-            sel[0].Adverts.Add(adv);
-            db.SaveChanges();
-            return RedirectToAction("Index", "User");
+            User sel = await db.Users.FirstOrDefaultAsync(a => (a.UserName == userName));                   
+            sel.Adverts.Add(adv);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index", "Seller");
         }
-        [HttpGet]
-        public IActionResult SearchRieltors()
+
+        public async Task<IActionResult> SearchRieltors()
         {
-           
-            return View();
-        }
+            var sellers = db.Sellers.Where(a => a.Rieltor == true);
+            return View(await sellers.ToListAsync());
+        }        
     }
 }

@@ -1,7 +1,7 @@
-﻿
+﻿@using OnionApp.Domain.Core
 @{
 }
-
+@model IEnumerable<Advert>
 <form method="post" asp-controller="User" asp-action="Search">
     <h4 class="my-0 fw-normal">Search property</h4>
     <label>Type of deal</label>
@@ -36,7 +36,7 @@
         </div>*@
     <div class="col-sm-8">
         <label class="form-label">City</label>
-        <input type="number" class="form-control" id="" placeholder="" value="" required name="City">
+        <input type="text" class="form-control" id="" placeholder="" value="" required name="City">
     </div>
 
     <div class="col-sm-6">
@@ -47,22 +47,25 @@
         <label class="form-label">Price max</label>
         <input type="number" class="form-control" id="" placeholder="" value="" required name="Price max">
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6">        
         @Html.RadioButton("SortPriceMinMax", "false")
         <span>Sale</span>
         @Html.RadioButton("SortPriceMaxMin", "false")
         <span>Rent</span> <br />
     </div>
-     <div class="col-sm-8">
-    @*<input id="credit" name="SortPriceMinMax" type="radio" class="form-check-input" value="true">
+    <div class="col-sm-8">
+        @*<input id="credit" name="SortPriceMinMax" type="radio" class="form-check-input" value="true">
         <label class="form-check-label" for="credit">Sort price min-max</label>*@
-    @*<label class="form-check-label">Sort price min-Max</label>*@
-        @Html.CheckBox("SortPriceMinMax", false)
+        @*<label class="form-check-label">Sort price min-Max</label>*@
+        @*@Html.CheckBox("SortPriceMinMax", false)
         <span>Sort price min-Max</span>
-  
-        @Html.CheckBox("SortPriceMaxMin", false)
-        <span>Sort price Max-min</span>
-    @*<input id="debit" name="SortPriceMaxMin" type="radio" class="form-check-input" value="false">
+
+        @Html.CheckBox("SortPriceMaxMin", false)*@
+        @*<span>Sort price Max-min</span>*@
+        <a asp-action="Index" asp-controller="Home" asp-route-sortOrder="@ViewBag.PriceSort">
+            Price
+        </a>
+        @*<input id="debit" name="SortPriceMaxMin" type="radio" class="form-check-input" value="false">
         <label class="form-check-label" for="debit">Sort price max-min</label>*@
     </div>
 

@@ -1,21 +1,16 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace OnionApp.Domain.Core
 {
-   [Table("Adverts")] 
+    [Table("Adverts")] 
     public class Advert
     {        
         public Guid Id { get; set; }
         public DateTime DateOfAdd { get; } = DateTime.Today;
-        DateTime? DateConfirm { get; set; }
-        DateTime Date;
+        public DateTime? DateConfirm { get; set; }
+        public DateTime Date;
         public DateTime date
         {
             get { return Date; }
@@ -32,9 +27,9 @@ namespace OnionApp.Domain.Core
         public bool RentOrSeal { get; set; } // true -Seal, false -rent
         public string PaimentConditions { get; set; }
         [Required]
-        public decimal FirstPrice { get; set; }
-        public decimal? LastPrice { get; set; }
-        public decimal Price;
+        public int FirstPrice { get; set; }
+        public int? LastPrice { get; set; }
+        public int Price;
 
         public decimal price
         {
@@ -42,24 +37,19 @@ namespace OnionApp.Domain.Core
             set
             {
                 if (LastPrice != null)
-                    Price = (decimal)LastPrice;
+                    Price = (int)LastPrice;
                 else Price = FirstPrice;
             }
         }
         [Required]
         public string City { get; set; }
-        public void ConfirmActual()
-        {
-            DateConfirm = DateTime.Today;
-        }
-        public void ChangePrice(decimal newprice)
-        {
-            LastPrice = newprice;
-        }
-        public void ChangePaimentConditions(string newPaimentConditions)
-        {
-            PaimentConditions = newPaimentConditions;
-        }
-        
+        //public void ConfirmActual()
+        //{
+        //    DateConfirm = DateTime.Today;
+        //}
+        //public void ChangePrice(decimal newprice)
+        //{
+        //    LastPrice = newprice;
+        //}   
     }
 }

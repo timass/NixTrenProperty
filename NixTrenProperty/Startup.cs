@@ -18,13 +18,7 @@ namespace NixTrenProperty
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            //var builder = new ConfigurationBuilder()
-            //    .AddInMemoryCollection(new Dictionary<string, string>
-            //    {
-            //        {"AdminEmail", "admin@gmail.com"},
-            //        {"AdminPassword", "Aa123456"}
-            //    });
-            //AppConfiguration = builder.Build();
+           
         }
         public IConfiguration AppConfiguration { get; set; }
 
@@ -38,11 +32,12 @@ namespace NixTrenProperty
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
+            services.AddDbContext<ApplicationContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IUserValidator<User>, CustomUserValidator>();
             // добавление ApplicationDbContext для взаимодействия с базой данных учетных записей
-            services.AddDbContext<ApplicationContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             // добавление сервисов Idenity
             services.AddIdentity<User, IdentityRole>(opts => {
                 opts.User.RequireUniqueEmail = false;    // уникальный email

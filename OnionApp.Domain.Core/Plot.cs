@@ -6,8 +6,7 @@ namespace OnionApp.Domain.Core
     [Table("Plots")]
     public class Plot : ObjectS
     {
-        public double AreaOfPlot { get; set; }
-      
+             
         //public Plot(bool electricity, bool gas, bool plumbing, bool sewerage, int objectId, string city, string address, 
         //    string describe, string photos, double areaOfPlot)
         //{

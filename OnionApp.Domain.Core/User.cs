@@ -10,9 +10,10 @@ namespace OnionApp.Domain.Core
         public string Name { get; set; }       
         public DateTime DateOfRegistration { get;} = DateTime.Now;
         public string Telephone { get; set; }
-        public List<Advert> Adverts { get; set; }
+        public List<Advert> Adverts { get; set; } = new List<Advert>();
         public bool Rieltor { get; set; }
         public Statistic Stata { get; set; }
+       
 
     }
 }

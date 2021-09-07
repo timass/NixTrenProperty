@@ -9,6 +9,7 @@ namespace OnionApp.Domain.Core
 {
     public class Statistic
     {
+        [Table("Statistic")]
         public Guid Id { get; set; }
         public double AverageDifPrice { get; set; }
         public string AverageTimeOfDeal { get; set; }

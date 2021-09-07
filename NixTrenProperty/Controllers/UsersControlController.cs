@@ -51,7 +51,7 @@ namespace NixTrenProperty.Controllers
             {
                 return NotFound();
             }
-            EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email, UserName = user.UserName};
+            EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email};
             return View(model);
         }
         
@@ -64,7 +64,7 @@ namespace NixTrenProperty.Controllers
                 if (user != null)
                 {
                     user.Email = model.Email;
-                    user.UserName = model.UserName;                   
+                    //user.UserName = model.UserName;                   
 
                     var result = await _userManager.UpdateAsync(user);
                     if (result.Succeeded)

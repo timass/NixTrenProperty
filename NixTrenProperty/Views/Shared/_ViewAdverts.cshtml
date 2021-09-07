@@ -40,7 +40,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            @advert.DateOfAdd;
+                                            @advert.DateOfAdd.ToString("dd.MM.yyyy")
                                         </td>
                                         <td>
                                         </td>
@@ -64,6 +64,8 @@
                         @if (Model != null)
                             @foreach (var advert in Model)
                             {
+                                if (advert.typeObj == "Apartment")
+                                {
                                 <table>
                                     <tr>
                                         <td>@advert.typeObj</td>
@@ -81,7 +83,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            @advert.DateOfAdd;
+                                            @advert.DateOfAdd.ToString("dd.MM.yyyy")
                                         </td>
                                         <td>
                                         </td>
@@ -89,8 +91,9 @@
                                         </td>
                                     </tr>
                                 </table>
-                                @*<script>setTimeout(2000);</script>*@
-                            }
+                                <script>setTimeout(1000);</script>
+                                    }
+                                }
                             else
                             {<a>No adverts yet</a>}
                         <p><a class="btn btn-lg btn-primary" href="#">View details</a></p>
@@ -103,37 +106,41 @@
                 <div class="container">
                     <div class="carousel-caption text-end">
                         @if (Model != null)
+                        
                             @foreach (var advert in Model)
                             {
-                                <table>
-                                    <tr>
-                                        <td>@advert.typeObj</td>
-                                        <td>
-                                            @if (advert.RentOrSeal)
-                                            {
-                                                <a>Seal</a>
-                                            }
-                                            else
-                                            {
-                                                <a>Rent</a>
-                                            }
-                                        </td>
-                                        <td>@advert.Price</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            @advert.DateOfAdd;
-                                        </td>
-                                        <td>
-                                        </td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                </table>
-                                @*<script>setTimeout(2000);</script>*@
+                                if (advert.typeObj == "House")
+                                {
+                                    <table>
+                                        <tr>
+                                            <td>@advert.typeObj</td>
+                                            <td>
+                                                @if (advert.RentOrSeal)
+                                                {
+                                                    <a>Seal</a>
+                                                }
+                                                else
+                                                {
+                                                    <a>Rent</a>
+                                                }
+                                            </td>
+                                            <td>@advert.Price</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @advert.DateOfAdd.ToString("dd.MM.yyyy")
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <script>setTimeout(1000);</script>
+                                }
                             }
-                            else
-                            {<a>No adverts yet</a>}
+                                    else
+                        {<a>No adverts yet</a>}
                         <p><a class="btn btn-lg btn-primary" href="#">View details</a></p>
                     </div>
                 </div>

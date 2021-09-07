@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NixTrenProperty.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,14 @@ namespace NixTrenProperty.Controllers
 {
     public class AdminController : Controller
     {
-        public IActionResult Index()
+        private ApplicationContext db;
+        public AdminController(ApplicationContext context)
         {
-            return View();
+            db = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            return View(await db.Adverts.ToListAsync());
         }
     }
 }

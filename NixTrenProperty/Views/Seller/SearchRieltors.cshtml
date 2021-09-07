@@ -1,7 +1,11 @@
-﻿@model IEnumerable<OnionApp.Domain.Core.User>
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<OnionApp.Domain.Core.User>
 @{
     ViewBag.Title = "Список пользователей";
 }
+<header>
+    <partial name="_BarSeller" />
+</header>
 
 <table class="table">
     <tr><th>User name</th><th>Statistic</th><th></th></tr>
@@ -10,12 +14,13 @@
         {
             <tr>
                 <td>@user.UserName</td>
-                <td>@user.UserName</td>
+                <td>@user.Telephone</td>
+
                 <td>
                     <form asp-action="Inform" asp-route-id="@user.Id" method="post">
                         <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.Id">Change</a>
                         <button type="submit" class="btn btn-sm btn-danger">
-                            Удалить
+                           
                         </button>
                     </form>
                 </td>
@@ -23,6 +28,6 @@
         }
     else
     {
-        <p>No seller yet</p>
+        <p>No rieltor yet</p>
     }
 </table>

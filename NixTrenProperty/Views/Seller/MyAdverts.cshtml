@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OnionApp.Domain.Core.Advert>
+@{
+    {
+        ViewData["Title"] = "Home Page";
+        Layout = "_Layout";
+    }
+}
+
+<body>
+    <a>Hello @User.Identity.Name!</a> @*test*@
+    <header>
+        <partial name="_BarSeller" />
+    </header>
+    <p>My adverts</p>
+    @foreach (var advert in Model)
+    {
+        <table>
+            <tr>
+
+                <td>Date of first Add</td>
+                <td>Date of confirm</td>
+                <td>Type of object</td>
+                <td>Price</td>
+            </tr>
+            <tr>
+
+                <td>@advert.DateOfAdd.ToString("dd.MM.yyyy")</td>
+                <td>@advert.Date.ToString("dd.MM.yyyy")e</td>
+                <td>@advert.typeObj</td>
+                <td>@advert.Price</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@advert.Id" method="post">
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@advert.Id.ToString()">Confirm actuality</a>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@advert.Id.ToString()">Change Price</a>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@advert.Id.ToString()">Change Paiment Conditions</a>
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    }
+
+</body>

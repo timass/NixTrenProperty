@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace OnionApp.Infrastructure.Business
 {
-    public class TypesObjectViewModel
+    public enum SortAdverts
     {
-        public TypesObject obj {get; set;}
+        PriceAsc,
+        PriceDesc
     }
 }

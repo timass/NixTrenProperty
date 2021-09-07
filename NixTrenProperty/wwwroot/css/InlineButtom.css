@@ -1,6 +1,9 @@
 ﻿.cla {
     display: inline-block;
 }
+.clo {
+    display: inline-block;
+}
 .bar {
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
 }

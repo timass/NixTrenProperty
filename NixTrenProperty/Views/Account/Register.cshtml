@@ -51,7 +51,7 @@
                             <p class="lead">Enter your phone, if you want to create adverts.</p>
                             <div class="col-12">
                                 <label asp-for="Telephone" class="form-label"></label><br />
-                                <input asp-for="Telephone" />
+                                <input id="telephone" asp-for="Telephone" />
                                 <span asp-validation-for="Telephone"></span>
                             </div>
                             <div class="col-12">
@@ -75,16 +75,19 @@
                     </form>
                 </div>
 
-                @*<script type="text/javascript">
+                <script type="text/javascript">
                         $('#telephone').inputmask("+38(999)999-9999");
                         jQuery.validator.addMethod("checkMaskPhone", function (value, element) {
                             return /\+\d{2}\(\d{3}\)\d{3}-\d{4}/g.test(value);
                         });
-                        //$.validator.addClassRules({
-                        //    'telephone': {
-                        //        checkMaskPhone: true,
-                        //    }
-                        //});
+                    $.validator.addClassRules({
+                            'telephone': {
+                                checkMaskPhone: true,
+                            }
+                        });
+                    </script>
+                @*<script>
+                        
                         $(function () {
                             var validForm = $('#formReg');
                             validForm.validate(

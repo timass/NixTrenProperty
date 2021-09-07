@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApp.Infrastructure.Data", "OnionApp.Infrastructure.Data\OnionApp.Infrastructure.Data.csproj", "{1BB7F889-B064-4364-86C1-69E77F927146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.App.Infrastructure.Business", "Onion.App.Infrastructure.Business\Onion.App.Infrastructure.Business.csproj", "{2C474BB5-084F-434A-B829-BEB95EE01FA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApp.Infrastructure.Business", "Onion.App.Infrastructure.Business\OnionApp.Infrastructure.Business.csproj", "{2C474BB5-084F-434A-B829-BEB95EE01FA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
