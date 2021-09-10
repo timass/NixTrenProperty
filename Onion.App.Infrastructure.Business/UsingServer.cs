@@ -6,9 +6,7 @@ using System.Collections.Generic;
 
 namespace BusinessLogic
 {
-    public class UsingServer<O, S>
-        where O : ObjectS
-        where S : Seller
+    public class UsingServer
     { }
     //{
     //    public void CheckAdversDate(Saver<O, S> save)

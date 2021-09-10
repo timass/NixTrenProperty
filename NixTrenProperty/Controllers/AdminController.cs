@@ -17,7 +17,7 @@ namespace NixTrenProperty.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await db.Adverts.ToListAsync());
+            return View();
         }
     }
 }

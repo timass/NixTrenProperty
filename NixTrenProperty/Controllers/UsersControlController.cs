@@ -54,7 +54,7 @@ namespace NixTrenProperty.Controllers
             EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email};
             return View(model);
         }
-        
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
@@ -82,7 +82,7 @@ namespace NixTrenProperty.Controllers
             }
             return View(model);
         }
-        
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {

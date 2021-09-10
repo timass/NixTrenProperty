@@ -1,0 +1,84 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+                    <table border="0" class="lead">
+                        <tr>
+                            <th>Type of property</th>
+                            <th>@Model.Advert.typeObj</th>
+                            </tr>
+                        <tr>
+                            <th>Type of deal</th>
+                            <th>
+                                @if (Model.Advert.RentOrSeal)
+                                {
+                                    <p>Seal</p> }
+                                else
+                                { <p>Rent</p>}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <th>@Model.Advert.City</th>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <th>@Model.Object.Address</th>
+                            </tr>
+                        <tr>
+                            <th>Paiment Conditions</th>
+                            <th>@Model.Advert.PaimentConditions</th>
+                            </tr>
+                        <tr>
+                            <th>Area</th>
+                            <th>@Model.Object.Area</th>
+                            </tr>
+                        <tr>
+                            <th>Electricity</th>
+                            <th>
+                                @if (Model.Object.Electricity)
+                                {
+                                    <p>yes</p> }
+                                else
+                                { <p>no</p>}
+                            </th>
+                            </tr>
+                        <tr>
+                            <th>Gas</th>
+                            <th>
+                                @if (Model.Object.Gas)
+                                {
+                                    <p>yes</p> }
+                                else
+                                { <p>no</p>}
+                            </th>
+                            </tr>
+                        <tr>
+                            <th>Plumbing</th>
+                            <th>
+                                @if (Model.Object.Plumbing)
+                                {
+                                    <p>yes</p> }
+                                else
+                                { <p>no</p>}
+                            </th>
+                                </tr>
+                                    <tr>                
+                            <th>Sewerage</th>
+                            <th>
+                                @if (Model.Object.Sewerage)
+                                {<p>yes</p> }
+                                else
+                                { <p>no</p>}
+                            </th>
+                                        </tr>
+                        <tr>
+                            <th>Date of add</th>
+                            <th>@Model.Advert.DateOfAdd.ToString("dd.MM.yyyy")</th>
+                        </tr>                      
+                    </table>
+    <p><h4>Seller Telephone - @Model.User.Telephone</h4></p>
+                    <hr class="col-md-12">
+                

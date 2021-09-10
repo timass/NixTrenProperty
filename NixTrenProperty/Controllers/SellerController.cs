@@ -72,40 +72,40 @@ namespace NixTrenProperty.Controllers
             string typeObj, string userName,
             bool rentOfSale, string paimentConditions, int firstPrice, string City)
         {
-            string idObj = "";
+            Guid idObj = new Guid();
             switch (typeObj)
             {
                 case "Plot":
                     db.Plots.Add(plot);
-                    idObj = plot.Id.ToString();
+                    idObj = plot.Id;
                     break;
                 case "House":
                     db.Houses.Add(house);
-                    idObj = house.Id.ToString();
+                    idObj = house.Id;
                     break;
                 case "ParkingPlace":
                     db.ParkingPlaces.Add(parkingPlace);
-                    idObj = parkingPlace.Id.ToString();
+                    idObj = parkingPlace.Id;
                     break;
                 case "Garage":
                     db.Garages.Add(garage);
-                    idObj = garage.Id.ToString();
+                    idObj = garage.Id;
                     break;
                 case "Apartment":
                     db.Apartments.Add(apartment);
-                    idObj = apartment.Id.ToString();
+                    idObj = apartment.Id;
                     break;
                 case "ManyLevelsApartment":
                     db.ManyLevelsApartments.Add(manyLevelsApartment);
-                    idObj = manyLevelsApartment.Id.ToString();
+                    idObj = manyLevelsApartment.Id;
                     break;
                 case "RoomIndividual":
                     db.RoomIndividuals.Add(roomIndividual);
-                    idObj = roomIndividual.Id.ToString();
+                    idObj = roomIndividual.Id;
                     break;
                 case "RoomInFlat":
                     db.RoomInFlats.Add(roomInFlat);
-                    idObj = roomInFlat.Id.ToString();
+                    idObj = roomInFlat.Id;
                     break;
                 default:
                     break;
@@ -113,7 +113,7 @@ namespace NixTrenProperty.Controllers
             Advert adv = new Advert
             {
                 typeObj = typeObj,
-                IdObj = idObj,
+                ObjectSId = idObj,
                 RentOrSeal = rentOfSale,
                 PaimentConditions = paimentConditions,
                 FirstPrice = firstPrice,
@@ -130,8 +130,8 @@ namespace NixTrenProperty.Controllers
 
         public async Task<IActionResult> SearchRieltors()
         {
-            var sellers = db.Sellers.Where(a => a.Rieltor == true);
-            return View(await sellers.ToListAsync());
+            var rieltors = db.Users.Where(a => a.Rieltor == true);
+            return View(await rieltors.ToListAsync());
         }        
     }
 }

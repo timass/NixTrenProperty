@@ -30,7 +30,7 @@ namespace NixTrenProperty.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.UserName, Name = model.Name, Telephone = model.Telephone };
+                User user = new User { Email = model.Email, UserName = model.Email, Name = model.Name, Telephone = model.Telephone };
                 // add user
                 var result = await _userManager.CreateAsync(user, model.Password);
                 
@@ -70,7 +70,7 @@ namespace NixTrenProperty.Controllers
             if (ModelState.IsValid)
             {
                 var result =
-                    await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {                    
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))

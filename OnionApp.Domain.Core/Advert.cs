@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace OnionApp.Domain.Core
 {
@@ -8,7 +9,7 @@ namespace OnionApp.Domain.Core
     public class Advert
     {        
         public Guid Id { get; set; }
-        public DateTime DateOfAdd { get; } = DateTime.Today;
+        public DateTime DateOfAdd { get; set; }
         public DateTime? DateConfirm { get; set; }
         public DateTime Date;
         public DateTime date
@@ -22,7 +23,8 @@ namespace OnionApp.Domain.Core
             }
         }
         public string typeObj { get; set; }               
-        public string IdObj { get; set; }
+        public Guid ObjectSId { get; set; }
+        public string UserName { get; set; }
         [Required]
         public bool RentOrSeal { get; set; } // true -Seal, false -rent
         public string PaimentConditions { get; set; }
@@ -31,7 +33,7 @@ namespace OnionApp.Domain.Core
         public int? LastPrice { get; set; }
         public int Price;
 
-        public decimal price
+        public int price
         {
             get { return Price; }
             set
@@ -43,6 +45,17 @@ namespace OnionApp.Domain.Core
         }
         [Required]
         public string City { get; set; }
+        public static List<string> typeList = new List<string>()
+        {
+            "Plot",
+            "House",
+            "ParkingPlace",
+            "Garage",
+            "Apartment",
+            "ManyLevelsApartment",
+            "RoomIndividual",
+            "RoomInFlat"
+        };
         //public void ConfirmActual()
         //{
         //    DateConfirm = DateTime.Today;

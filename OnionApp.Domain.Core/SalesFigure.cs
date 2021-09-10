@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnionApp.Domain.Core
 {
-   public class SalesFigure 
+
+    [Table("SalesFigure")]
+    public class SalesFigure 
     {
         public Guid Id { get; set; }        
         public bool SaleOrRent { get; set; }

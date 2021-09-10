@@ -9,6 +9,9 @@ namespace OnionApp.Infrastructure.Business
     public enum SortAdverts
     {
         PriceAsc,
-        PriceDesc
+        PriceDesc,
+        DateAsc,
+        DateDesc,
+
     }
 }

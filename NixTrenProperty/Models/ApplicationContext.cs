@@ -10,11 +10,8 @@ namespace NixTrenProperty.Models
 {
     public class ApplicationContext : IdentityDbContext<User>
     {
-        // public DbSet<Rieltor> Rieltors { get; set; }
-        public DbSet<Seller> Sellers { get; set; }
-        // public DbSet<BuyerOrSeekerRieltor> BuyerOrSeekerRieltor { get; set; }
-
-        //  public DbSet<SalesFigure> SalesFigures { get; set; }
+       
+        public DbSet<SalesFigure> SalesFigures { get; set; }
         public DbSet<Advert> Adverts { get; set; }
         public DbSet<Statistic> Statistic { get; set; }
         public DbSet<Plot> Plots { get; set; }

@@ -9,20 +9,23 @@
  <header>
         <partial name="_BarSeller" />
   </header>
- <form asp-action="edit" asp-controller="Edit" asp-route-id="@Model.Id">
-     <div class="form-group">
-         <label asp-for="DateConfirm" class="control-label">Confirm actuality</label>
-         <input type="checkbox" asp-for="DateConfirm" value="@DateTime.Today" class="form-control" />
-     </div>
-     <div class="form-group">
-         <label asp-for="LastPrice" class="control-label">Price</label>
-         <input type="number" asp-for="LastPrice" class="form-control" />
-     </div>
-     <div class="form-group">
-         <label asp-for="PaimentConditions" class="control-label">Paiment Condition</label>
-         <textarea asp-for="PaimentConditions" class="form-control"/>
-     </div>
-     <div class="form-group">
-         <input type="submit" value="Save" class="btn btn-default" />
-     </div>
- </form>
+ <body>
+     <form asp-action="edit" asp-controller="Edit" asp-route-id="@Model.Id">
+
+         <div class="form-group">
+             <label asp-for="DateConfirm" class="control-label">Confirm actuality</label>
+             <input type="text" asp-for="DateConfirm" value="@DateTime.Today" class="form-control" />
+         </div>
+         <div class="form-group">
+             <label asp-for="LastPrice" class="control-label">Price</label>
+             <input type="number" asp-for="LastPrice" class="form-control" />
+         </div>
+         <div class="form-group">
+             <label asp-for="PaimentConditions" class="control-label">Paiment Condition</label>
+             <textarea asp-for="PaimentConditions" class="form-control" />
+         </div>
+         <div class="form-group">
+             <input type="submit" value="Save" class="btn btn-default" />
+         </div>
+     </form>
+ </body>

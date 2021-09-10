@@ -4,6 +4,7 @@
 }
 
 
+
 <header>
     <partial name="_BarSeller" />
 </header>
@@ -29,6 +30,9 @@
             </div>
             <div class="col-sm-6">
                 <input type="hidden" class="form-control" id="" placeholder="" value="@User.Identity.Name" required name="userName">
+            </div>
+            <div class="col-sm-6">
+                <input type="hidden" class="form-control" id="" placeholder="" value="@DateTime.Today" required name="DateOfAdd">
             </div>
             @*<button class="w-100 btn btn-lg btn-primary" type="submit">Continue</button>*@
 
@@ -163,7 +167,7 @@
                 $(function () {
                     $.viewMap = {
                         '0': $([]),
-                        'Plot': $("#AreaOfP, #PlotBut, #But"),
+                        'Plot': $("#But"),
                         'House': $("#AreaOfP , #RoomsInH, #AreaOfK, #T, #But"),
                         'ParkingPlace': $("#El, #But"),
                         'Garage': $("#El, #P, #Cel, #But"),
