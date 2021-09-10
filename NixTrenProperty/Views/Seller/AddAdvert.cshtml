@@ -1,15 +1,17 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@{
     // ViewData["Title"] = "Home Page";
     Layout = "_Layout";
 }
 
 
 
+<h1>Hello @User.Identity.Name</h1>
 <header>
     <partial name="_BarSeller" />
 </header>
 <body>
-    <div class="container">       
+    <div class="container">
         <form id="Pl" method="post" asp-controller="Seller" asp-action="AddAdvert">
             <div class="row g-5">
                 <div class="col-md-6">
@@ -32,9 +34,9 @@
                 <input type="hidden" class="form-control" id="" placeholder="" value="@User.Identity.Name" required name="userName">
             </div>
             <div class="col-sm-6">
-                <input type="hidden" class="form-control" id="" placeholder="" value="@DateTime.Today" required name="DateOfAdd">
-            </div>
-            @*<button class="w-100 btn btn-lg btn-primary" type="submit">Continue</button>*@
+                    <input type="hidden" class="form-control" id="" placeholder="" value="@DateTime.Today" required name="DateOfAdd">
+                </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Continue</button>
 
             <label class="col-md-4">Type of deal</label>
             <div class="col-md-4">
@@ -157,9 +159,9 @@
             </div>
             <button id="But" class="w-100 btn btn-lg btn-primary" type="submit">Add Advert</button>
             @*@if ($("#viewSelector") == "Plot")
-        {
-        <button class="w-100 btn btn-lg btn-primary" type="submit" method="post" asp-controller="User" asp-action="AddPlot">Add property</button>
-        }*@
+                {
+                <button class="w-100 btn btn-lg btn-primary" type="submit" method="post" asp-controller="User" asp-action="AddPlot">Add property</button>
+                }*@
 
 
 
@@ -186,6 +188,6 @@
                 });
 
             </script>
-        </form>        
+        </form>
     </div>
 </body>

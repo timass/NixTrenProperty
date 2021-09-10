@@ -14,7 +14,7 @@
 
          <div class="form-group">
              <label asp-for="DateConfirm" class="control-label">Confirm actuality</label>
-             <input type="text" asp-for="DateConfirm" value="@DateTime.Today" class="form-control" />
+             <input type="text" asp-for="DateConfirm" value="@DateTime.Today.ToString("dd.MM.yyyy")" class="form-control" />
          </div>
          <div class="form-group">
              <label asp-for="LastPrice" class="control-label">Price</label>
@@ -22,10 +22,8 @@
          </div>
          <div class="form-group">
              <label asp-for="PaimentConditions" class="control-label">Paiment Condition</label>
-             <textarea asp-for="PaimentConditions" class="form-control" />
+             <input type="text" asp-for="PaimentConditions" class="form-control" />
          </div>
-         <div class="form-group">
-             <input type="submit" value="Save" class="btn btn-default" />
-         </div>
+         <button class="w-25 btn btn-lg btn-primary" type="submit">Save</button>         
      </form>
  </body>

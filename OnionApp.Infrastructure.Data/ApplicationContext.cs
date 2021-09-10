@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnionApp.Domain.Core;
-using NixTrenProperty.Models;
 
-namespace NixTrenProperty.Models
+
+namespace OnionApp.Infrastructure.Data
 {
     public class ApplicationContext : IdentityDbContext<User>
     {

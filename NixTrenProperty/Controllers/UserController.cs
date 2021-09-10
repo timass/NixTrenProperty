@@ -1,15 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using OnionApp.Domain.Core;
 using OnionApp.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using NixTrenProperty.Models;
-using Microsoft.AspNetCore.Identity;
-using NixTrenProperty.ViewModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace NixTrenProperty.Controllers
 {
@@ -23,8 +16,8 @@ namespace NixTrenProperty.Controllers
             _userManager = userManager;
             db = context;
         }
+
         
-       
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);

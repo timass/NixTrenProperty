@@ -34,10 +34,11 @@
 <form method="get">
     <div class="form-inline">
         <label>Type object</label>
-        <select name="typeObject" asp-items="Model.FilterViewModel.TypeObjects" class="form-control"></select>
-        <label>Rent or Seal</label>
-        <input name="RentOrSeal" type="checkbox" value="@Model.FilterViewModel.SelectedRentOrSeal" class="form-control" />
-        @Html.CheckBox("Rent Or Seal", true)
+        <select name="typeObject" asp-items="@Model.FilterViewModel.TypeObjects" class="form-control"></select>
+        @*<input name="RentOrSeal" value="@Model.FilterViewModel.SelectedRentOrSeal" class="form-control" />*@
+        <input type="radio" asp-items="@Model.FilterViewModel.SelectedRentOrSeal" value="true" name="RentOrSeal" />Seal<br />
+        <input type="radio" asp-items="@Model.FilterViewModel.SelectedRentOrSeal" value="false" name="RentOrSeal" />Rent<br />
+
         <label>City: </label>
         <input name="city" value="@Model.FilterViewModel.SelectedCity" class="form-control" />
         <input type="submit" value="Filtr" class="btn btn-outline-dark" />
@@ -71,7 +72,7 @@
     @if (Model.Adverts != null)
         @foreach (var u in Model.Adverts)
         {
-            <tr><td>@u.Price</td><td>@u.Date</td><td><form  asp-action="AdvertView" asp-controller="Home" asp-for="id" asp-route-id="@u.Id.ToString()"><button class="w-25 btn-primary btn-lg" type="submit">Details</button></form></td></tr>
+            <tr><td>@u.Price</td><td>@u.Date.ToString("dd.MM.yyyy")</td><td><form  asp-action="AdvertView" asp-controller="Home" asp-for="id" asp-route-id="@u.Id.ToString()"><button class="w-25 btn-primary btn-lg" type="submit">Details</button></form></td></tr>
         }
         else
         {

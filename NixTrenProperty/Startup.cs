@@ -1,15 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OnionApp.Domain.Core;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
-using NixTrenProperty.Models;
 using NixTrenProperty.ViewModels;
-using Microsoft.AspNetCore.Http;
+using OnionApp.Domain.Core;
+using OnionApp.Infrastructure.Data;
 
 namespace NixTrenProperty
 {
@@ -36,17 +34,17 @@ namespace NixTrenProperty
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IUserValidator<User>, CustomUserValidator>();
-            // добавление ApplicationDbContext для взаимодействия с базой данных учетных записей
+           
             
-            // добавление сервисов Idenity
+            // Identity
             services.AddIdentity<User, IdentityRole>(opts => {
-                opts.User.RequireUniqueEmail = false;    // уникальный email
-                opts.User.AllowedUserNameCharacters = ".@abcdefghijklmnopqrstuvwxyz"; // допустимые символы
-                opts.Password.RequiredLength = 6;   // минимальная длина
-                opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
-                opts.Password.RequireLowercase = true; // требуются ли символы в нижнем регистре
-                opts.Password.RequireUppercase = true; // требуются ли символы в верхнем регистре
-                opts.Password.RequireDigit = true; // требуются ли цифры
+                opts.User.RequireUniqueEmail = false;    // Email
+                opts.User.AllowedUserNameCharacters = ".@abcdefghijklmnopqrstuvwxyz"; // possible symbols
+                opts.Password.RequiredLength = 6;   // min length
+                opts.Password.RequireNonAlphanumeric = false;   
+                opts.Password.RequireLowercase = true; 
+                opts.Password.RequireUppercase = true;
+                opts.Password.RequireDigit = true; 
             })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationContext>();
@@ -79,10 +77,14 @@ namespace NixTrenProperty
             app.UseEndpoints(endpoints =>
                 {
                     //endpoints.MapAreaControllerRoute(
-                    //    name: "userArea",
-                    //    areaName: "userArea",
-                    //    pattern: "UserArea/{controller=Home}/{action=Index}/{id?}");                   
-                    endpoints.MapControllerRoute(
+                    //   name: "UserArea",
+                    //   areaName: "UserArea",
+                    //   pattern: "userArea/{controller=User}/{action=Index}/{id?}");
+                    //endpoints.MapAreaControllerRoute(
+                    //   name: "SellerArea",
+                    //   areaName: "SellerArea",
+                    //   pattern: "SellerArea/{controller=Seller}/{action=Index}/{id?}");
+            endpoints.MapControllerRoute(
                         name: "default",
                         pattern: "{controller=Home}/{action=Index}/{id?}");
                    // endpoints.MapRazorPages();

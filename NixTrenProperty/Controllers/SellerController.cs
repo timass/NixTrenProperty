@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NixTrenProperty.Models;
 using OnionApp.Domain.Core;
+using OnionApp.Infrastructure.Data;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,20 +12,27 @@ namespace NixTrenProperty.Controllers
 {
     public class SellerController : Controller
     {
+        //private readonly UserManager<User> _userManager;
         ApplicationContext db;
-        public SellerController(ApplicationContext context)
-        {           
+        public SellerController(/*UserManager<User> userManager,*/ ApplicationContext context)
+        {
+            //_userManager = userManager;
             db = context;
         }
+        [Authorize(Roles = "seller")]
         public IActionResult Index()
         {
 
             return View();
         }
+        [Authorize(Roles = "seller")]
         public async Task<IActionResult> MyAdverts()
         {
-            return View(await db.Adverts.ToListAsync());
+            //var user = await _userManager.FindByIdAsync(User.Identity.Name);
+            var myAdverts = db.Adverts.Where(p => p.UserName == User.Identity.Name);
+            return View(await myAdverts.ToListAsync());
         }
+        [Authorize(Roles = "seller")]
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
@@ -34,7 +42,7 @@ namespace NixTrenProperty.Controllers
                 return View(advert);
             else return NotFound();
         }
-      
+        [Authorize(Roles = "seller")]
         [HttpPost]
         public async Task<IActionResult> Edit(Advert advert)
         {
@@ -42,8 +50,8 @@ namespace NixTrenProperty.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index", "Seller");
         }
-       
 
+        [Authorize(Roles = "seller")]
         [HttpPost]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -57,13 +65,14 @@ namespace NixTrenProperty.Controllers
             }            
             return NotFound();
         }
-
+        [Authorize(Roles = "seller")]
         [HttpGet]
         public IActionResult AddAdvert()
         {
 
             return View();
         }
+        [Authorize(Roles = "seller")]
         [HttpPost]
         public async Task<IActionResult> AddAdvert(
             Plot plot, House house, ParkingPlace parkingPlace, Garage garage,
@@ -116,6 +125,7 @@ namespace NixTrenProperty.Controllers
                 ObjectSId = idObj,
                 RentOrSeal = rentOfSale,
                 PaimentConditions = paimentConditions,
+                UserName = userName,
                 FirstPrice = firstPrice,
                 City = City
             };
@@ -127,7 +137,7 @@ namespace NixTrenProperty.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index", "Seller");
         }
-
+        [Authorize(Roles = "seller")]
         public async Task<IActionResult> SearchRieltors()
         {
             var rieltors = db.Users.Where(a => a.Rieltor == true);

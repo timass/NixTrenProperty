@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NixTrenProperty.Models;
-using Microsoft.AspNetCore.Identity;
-using OnionApp.Domain.Core;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using OnionApp.Infrastructure.Business;
-using System;
 using NixTrenProperty.ViewModels;
+using OnionApp.Domain.Core;
+using OnionApp.Infrastructure.Business;
+using OnionApp.Infrastructure.Data;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NixTrenProperty.Controllers
 {
@@ -92,14 +92,8 @@ namespace NixTrenProperty.Controllers
         [HttpPost]
         public async Task<IActionResult> AdvertView(string id)
         {
-
             Advert advert = await db.Adverts.FirstOrDefaultAsync(p => p.Id.ToString() == id);
             User user = await db.Users.FirstOrDefaultAsync(p => p.Name == advert.UserName);
-
-
-            // House o = await db.Houses.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
-            
-
 
             switch (advert.typeObj)
             {
@@ -107,7 +101,7 @@ namespace NixTrenProperty.Controllers
 
                     House objH = await db.Houses.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
 
-                    AdvertViewModel<Plot> modelH = new AdvertViewModel<Plot>
+                    AdvertViewModel<House> modelH = new AdvertViewModel<House>
                     {
                         Advert = advert,
                         User = user,
@@ -126,57 +120,83 @@ namespace NixTrenProperty.Controllers
                     };
 
                     return View("ViewPlot", modelP);
-               
+                case "ParkingPlace":
 
-                //    case "House":
+                    ParkingPlace objPP = await db.ParkingPlaces.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
 
-                //        obj = await db.Houses.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
-                //        break;
-                //    case "ParkingPlace":
+                    AdvertViewModel<ParkingPlace> modelPP = new AdvertViewModel<ParkingPlace>
+                    {
+                        Advert = advert,
+                        User = user,
+                        Object = objPP
+                    };
 
-                //        obj = await db.ParkingPlaces.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
-                //        break;
-                //    case "Garage":
+                    return View("ViewParkingPlace", modelPP);
+                case "Garage":
 
-                //        obj = await db.Garages.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
-                //        break;
-                //    case "Apartment":
+                    Garage objG = await db.Garages.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
 
-                //        obj = await db.Apartments.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
-                //        break;
-                //    case "ManyLevelsApartment":
+                    AdvertViewModel<Garage> modelG = new AdvertViewModel<Garage>
+                    {
+                        Advert = advert,
+                        User = user,
+                        Object = objG
+                    };
 
-                //        obj = await db.ManyLevelsApartments.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
-                //        break;
-                //    case "RoomIndividual":
+                    return View("ViewGarage", modelG);
+                case "Apartment":
 
-                //        obj = await db.RoomIndividuals.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
-                //        break;
-                //    case "RoomInFlat":
+                    Apartment objA = await db.Apartments.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
 
-                //        obj = await db.RoomInFlats.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
-                //        break;
-                //    default:
-                //        break;
-                //}
-                //AdvertViewModel<House> mod = new AdvertViewModel<House>
-                //{ 
-                //    Advert = advert,
-                //    User = user, 
-                //    Object = obj
-                //};
+                    AdvertViewModel<Apartment> modelA = new AdvertViewModel<Apartment>
+                    {
+                        Advert = advert,
+                        User = user,
+                        Object = objA
+                    };
 
+                    return View("ViewApartment", modelA);
+                case "ManyLevelsApartment":
 
+                    ManyLevelsApartment objM = await db.ManyLevelsApartments.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
 
+                    AdvertViewModel<ManyLevelsApartment> modelM = new AdvertViewModel<ManyLevelsApartment>
+                    {
+                        Advert = advert,
+                        User = user,
+                        Object = objM
+                    };
 
+                    return View("ViewManyLevelsApartment", modelM);
+                case "RoomIndividual":
 
+                    RoomIndividual objRI = await db.RoomIndividuals.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
 
+                    AdvertViewModel<RoomIndividual> modelRI = new AdvertViewModel<RoomIndividual>
+                    {
+                        Advert = advert,
+                        User = user,
+                        Object = objRI
+                    };
+
+                    return View("ViewRoomIndividual", modelRI);
+                case "RoomInFlat":
+
+                    RoomInFlat objRF = await db.RoomInFlats.FirstOrDefaultAsync(p => p.Id == advert.ObjectSId);
+
+                    AdvertViewModel<RoomInFlat> modelRF = new AdvertViewModel<RoomInFlat>
+                    {
+                        Advert = advert,
+                        User = user,
+                        Object = objRF
+                    };
+
+                    return View("ViewRoomInFlat", modelRF);
                 default:
                     break;
             }
             return NotFound();
         }
-
 
         //public IActionResult Index()
         //{

@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApp.Infrastructure.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApp.Infrastructure.Business", "Onion.App.Infrastructure.Business\OnionApp.Infrastructure.Business.csproj", "{2C474BB5-084F-434A-B829-BEB95EE01FA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NixTrenProperty.Tests", "NixTrenProperty.Tests\NixTrenProperty.Tests.csproj", "{3BD2941D-6F4E-496C-9C72-179105DF777F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2C474BB5-084F-434A-B829-BEB95EE01FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C474BB5-084F-434A-B829-BEB95EE01FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C474BB5-084F-434A-B829-BEB95EE01FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD2941D-6F4E-496C-9C72-179105DF777F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD2941D-6F4E-496C-9C72-179105DF777F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD2941D-6F4E-496C-9C72-179105DF777F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD2941D-6F4E-496C-9C72-179105DF777F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

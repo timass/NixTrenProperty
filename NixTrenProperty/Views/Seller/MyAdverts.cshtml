@@ -24,12 +24,11 @@
         </tr>
         @foreach (var advert in Model)
         {
-            if (advert.UserName == User.Identity.Name)
-            {
+           
                 <tr>
 
                     <td>@advert.DateOfAdd.ToString("dd.MM.yyyy")</td>
-                    <td>@advert.Date.ToString("dd.MM.yyyy")e</td>
+                    <td>@advert.Date.ToString("dd.MM.yyyy")</td>
                     <td>@advert.typeObj</td>
                     <td>@advert.Price</td>
                     <td>
@@ -37,13 +36,11 @@
                             <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@advert.Id.ToString()">Confirm actuality</a>
                             <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@advert.Id.ToString()">Change Price</a>
                             <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@advert.Id.ToString()">Change Paiment Conditions</a>
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                Delete
-                            </button>
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>
-            }
+            
         }
     </table>
 

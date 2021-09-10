@@ -9,5 +9,6 @@ namespace OnionApp.Services.Interfaces
 {
     interface IShowStatisticRealtor
     {
+        void ShowStatistic(User user);
     }
 }
